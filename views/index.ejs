@@ -1,11 +1,58 @@
 <%- include('partials/header') -%>
 
 <main class="container">
-    <div class="row justify-content-around mt-5">
-        <a href="/login" class="col-3 btn btn-primary"> Login</a>
-        <a href="/signup" class="col-3 btn btn-primary"> Signup</a>
+    <div class="row justify-content-center">
+        <section class="col-6 mt-5">
+            <% if (locals.messages.errors) { %>
+                <% messages.errors.forEach( el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+            <% if (locals.messages.info) { %>
+                <% messages.info.forEach( el => { %>
+                    <div class="alert alert-info"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+            <form action="/createRegistrant" method="POST">
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName">
+                  </div>
+                <div class="mb-3">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="firstName" name="firstName">
+                </div>
+                <div class="mb-3">
+                  <label for="distance" class="form-label">Mobile Number</label>
+                  <input type="number" class="form-control" id="mobileNumber" name="mobileNumber">
+                </div>
+                <div class="mb-3">
+                    <label for="distance" class="form-label">Distance</label>
+                    <select name="distance" id="distance">
+                      <option value="5km">5km</option>
+                      <option value="10km">10km</option>
+                      <option value="15km">15km</option>
+                      <option value="21km">21km</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="shirtSize" class="form-label">Shirt Size</label>
+                    <select name="shirtSize" id="shirtSize">
+                      <option value="S">S</option>
+                      <option value="M">M</option>
+                      <option value="L">L</option>
+                      <option value="XL">XL</option>
+                      <option value="XXL">XXL</option>
+                    </select>
+                  </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+              <form action="/registrants" method="GET">
+                <button type="submit" class="btn btn-primary">See Registrants</button>
+              </form>
+        </section>
     </div>
 </main>
-    
+
 
 <%- include('partials/footer') -%>

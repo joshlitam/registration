@@ -1,0 +1,33 @@
+<%- include('partials/header') -%>
+
+<div class="col-6">
+<table class="table table-stripped table-bordered">
+  <thead class="thead-dark">
+    <th scope="col">Participant No.</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Mobile Number</th>
+    <th scope="col">Distance</th>
+    <th scope="col">Shirt Size</th>
+  </thead>
+  <tbody>
+    <% for(var i=0; i<registrants.length; i++) {%>
+      <tr>
+        <td><%=i%></td>
+        <td><%=registrants[i].lastName%></td>
+        <td><%=registrants[i].firstName%></td>
+        <td><%=registrants[i].mobileNumber%></td>
+        <td><%=registrants[i].distance%></td>
+        <td><%=registrants[i].shirtSize%></td>
+      </tr>
+    <% } %>
+  </tbody>
+</table> 
+
+<form action="/" method="GET">
+  <button type="submit" class="btn btn-primary">Back to Registration</button>
+</form>
+
+
+
+<%- include('partials/footer') -%>
